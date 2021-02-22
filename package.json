@@ -1,0 +1,11 @@
+{
+  "name": "learning-redux",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Cleomir",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "redux": "^4.0.5"
+  }
+}
