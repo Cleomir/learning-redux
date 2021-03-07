@@ -20,6 +20,7 @@ const EditPostForm = ({ match }) => {
       history.push(`/posts/${postId}`);
     }
   };
+
   return (
     <section>
       <h2>Edit Post</h2>

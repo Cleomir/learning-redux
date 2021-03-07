@@ -8,6 +8,13 @@ const initialState = {
   error: null,
 };
 
+export const addNewPost = createAsyncThunk(
+  "posts/addNewPost",
+  async (initialPost) => {
+    const response = await client.post("/fakeApi/posts", { post: initialPost });
+    return response.post;
+  }
+);
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
   const response = await client.get("/fakeApi/posts");
   return response.posts;
@@ -60,13 +67,15 @@ const postsSlice = createSlice({
       state.status = "failed";
       state.error = action.error.message;
     },
+    [addNewPost.fulfilled]: (state, action) => {
+      state.posts.push(action.payload);
+    },
   },
 });
 
 export const { postAdded, postUpdated, reactionAdded } = postsSlice.actions;
-
-export default postsSlice.reducer;
-
 export const selectAllPosts = (state) => state.posts.posts;
 export const selectPostById = (state, postId) =>
   state.posts.posts.find((post) => post.id === postId);
+
+export default postsSlice.reducer;

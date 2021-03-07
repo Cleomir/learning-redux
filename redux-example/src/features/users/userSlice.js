@@ -14,7 +14,7 @@ const usersSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [fetchUsers.fulfilled]: (state, action) => {
+    [fetchUsers.fulfilled]: (_state, action) => {
       return action.payload;
     },
   },
